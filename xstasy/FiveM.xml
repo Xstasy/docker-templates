@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>FiveM</Name>
+  <Repository>systemrp/fivemserver</Repository>
+  <Registry>https://hub.docker.com/r/systemrp/fivem/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support></Support>
+  <Project>https://fivem.net/</Project>
+  <Overview>With this Docker you can run FiveM (GTA V MOD SERVER) it will automatically download the latest version or if you want to updated it yourself set the &#x2018;Manual Updates&#x2019; (in the 'Show more settings' tab down below) to &#x2018;true&#x2019; (without quotes). The Docker will automatically extract it and download all other required files (resources, server.cfg). You can get fx.tar.xz from here: https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/ To run this container you must provide a valid Server Key (you can get them from here: https://keymaster.fivem.net/) and your prefered Server Name.&#xD;
+&#xD;
+Update Notice: Simply restart the container and it will download the newest version or if you set &#x2018;Manual Updates&#x2019; to &#x2018;true&#x2019; place the new fx.tar.xz in the main directory and restart the container.&#xD;
+&#xD;
+Console: To connect to the console open up the terminal on the host machine and type in: 'docker exec -u terraria -ti NAMEOFYOURCONTAINER screen -xS FiveM' (without quotes) to exit the screen session press CTRL+A and then CTRL+D or simply close the terminal window in the first place.</Overview>
+  <Category>GameServers:</Category>
+  <WebUI/>
+  <TemplateURL>false</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/ich777/docker-templates/master/ich777/images/fivem.png</Icon>
+  <ExtraParams>--restart=unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <Description>With this Docker you can run FiveM (GTA V MOD SERVER) it will automatically download the latest version or if you want to updated it yourself set the &#x2018;Manual Updates&#x2019; (in the 'Show more settings' tab down below) to &#x2018;true&#x2019; (without quotes). The Docker will automatically extract it and download all other required files (resources, server.cfg). You can get fx.tar.xz from here: https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/ To run this container you must provide a valid Server Key (you can get them from here: https://keymaster.fivem.net/) and your prefered Server Name.&#xD;
+&#xD;
+Update Notice: Simply restart the container and it will download the newest version or if you set &#x2018;Manual Updates&#x2019; to &#x2018;true&#x2019; place the new fx.tar.xz in the main directory and restart the container.&#xD;
+&#xD;
+Console: To connect to the console open up the terminal on the host machine and type in: 'docker exec -u terraria -ti NAMEOFYOURCONTAINER screen -xS FiveM' (without quotes) to exit the screen session press CTRL+A and then CTRL+D or simply close the terminal window in the first place.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>30110</HostPort>
+        <ContainerPort>30110</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>30120</HostPort>
+        <ContainerPort>30120</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>30110</HostPort>
+        <ContainerPort>30110</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>30120</HostPort>
+        <ContainerPort>30120</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/fivem</HostDir>
+      <ContainerDir>/server/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>server.cfg</Value>
+      <Name>GAME_CONFIG</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>START_VARS</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value></Value>
+      <Name>VERSION</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>99</Value>
+      <Name>UID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>100</Value>
+      <Name>GID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name/>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="ServerFiles" Target="/server/data" Default="" Mode="rw" Description="Container Path: /server/data" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/fivem</Config>
+  <Config Name="ConfigFile" Target="GAME_CONFIG" Default="" Mode="" Description="You can edit the server.cfg after the first start." Type="Variable" Display="always" Required="false" Mask="false">server.cfg</Config>
+  <Config Name="Start Variables" Target="START_VARS" Default="" Mode="" Description="Extra start variables." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="VERSION" Target="VERSION" Default="development" Mode="" Description="Either stable, optional, development" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="TCP 1" Target="30110" Default="" Mode="tcp" Description="Container Port: 30110" Type="Port" Display="always" Required="true" Mask="false">30110</Config>
+  <Config Name="TCP 2" Target="30120" Default="" Mode="tcp" Description="Container Port: 30120" Type="Port" Display="always" Required="true" Mask="false">30120</Config>
+  <Config Name="UDP 1" Target="30110" Default="" Mode="udp" Description="Container Port: 30110" Type="Port" Display="always" Required="true" Mask="false">30110</Config>
+  <Config Name="UDP 2" Target="30120" Default="" Mode="udp" Description="Container Port: 30120" Type="Port" Display="always" Required="true" Mask="false">30120</Config>
+  <Config Name="UID" Target="UID" Default="" Mode="" Description="Container Variable: UID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">99</Config>
+  <Config Name="GID" Target="GID" Default="" Mode="" Description="Container Variable: GID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">100</Config>
+</Container>
